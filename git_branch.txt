@@ -1,0 +1,13 @@
+git branch                      // status
+git branch rama1                // crea una rama
+git branch -m rama1 ramita1     // modifica el nombre
+git checkout ramita1            // cambio de rama
+git branch -d ramita1           // delete
+
+git diff main ramita1           // diferencia hacia un lado
+git diff ramita1 main           // diferencia hacia el otro
+
+-----
+git checkout main               // me paro en main para hacerle el merge
+git merge ramita1 main          // rama origen a rama destino
+-----
