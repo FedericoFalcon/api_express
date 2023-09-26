@@ -38,7 +38,7 @@ class Server{
         //     res.send('Home')
         // })
 
-        this.app.use('/api/v1/demo', require('../routes/demo'));
+        this.app.use('/v1', require('../routes/demo'));
     }
 
 }
