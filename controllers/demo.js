@@ -81,28 +81,44 @@ const getPokemon = (req, res) => {
 
     axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
     .then(({status, data, statusText}) => {
-        const responseData = {
+
+        if (!abilities && !sprites && !stats){
+            res.status(200).json({
             status,
             data: {
-              nombre: data.name,
+                nombre: name,
+                id: data.id,
+                tipo: data.types[0].type.name,
+                altura: `${data.height} pies`,
+                peso: `${data.weight} kg`
             },
-            statusText,
-          };
+                statusText,
+            });
+
+        }else{
+            const responseData = {
+                status,
+                data: {
+                  nombre: data.name,
+                },
+                statusText,
+            };
     
-          if (abilities === '1') {
+            if (abilities === '1') {
             responseData.data.habilidades = data.abilities;
-          }
+            }
     
-          if (sprites === '1') {
+            if (sprites === '1') {
             responseData.data.movimientos = data.sprites;
-          }
+            }
     
-          if (stats === '1') {
+            if (stats === '1') {
             responseData.data.stats = data.stats;
-          }
+            }
     
-          res.status(200).json(responseData);
-        })
+            res.status(200).json(responseData);
+        }
+    })
     .catch((error) => {
         // console.log(error);
         res.status(404).json({Error: 'Pokemon no encontrado'});
