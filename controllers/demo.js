@@ -166,9 +166,81 @@ const getPokemons = (req, res) => {
     .catch((error) => {
         // handle error
         console.log(error);
-        res.status(400).json({Error: 'Pokemon no encontrado'});
+        res.status(400).json({Error: 'Bad request'});
     })
 };
+
+const getPokemons2 = (req, res) => {
+    axios.get("https://pokeapi.co/api/v2/pokemon/?limit=50&offset=50")
+    .then(({status, data, statusText}) => {
+        // handle success
+        console.log({status, data, statusText});
+        // const generoPokemon = data.genera.find(entrada => entrada.language.name === "es");
+        // const generoEspañol = generoPokemon.genus;
+        res.status(200).json({
+            status,
+            data,
+            statusText,
+        });
+    })
+    .catch((error) => {
+        // handle error
+        console.log(error);
+        res.status(400).json({Error: 'Bad request'});
+    })
+};
+
+const getPokemonType = (req, res) => {
+    console.log(req.params);
+
+    const { type } = req.params;
+
+    const { pokemon, damage_relations, moves } = req.query;
+
+    axios.get(`https://pokeapi.co/api/v2/type/${type}`)
+    .then(({status, data, statusText}) => {
+
+        if (!pokemon && !damage_relations && !moves){
+            res.status(200).json({
+            status,
+            data: {
+                tipo: data.name,
+                id: data.id,
+            },
+                statusText,
+            });
+
+        }else{
+            const responseData = {
+                status,
+                data: {
+                  nombre: data.name,
+                },
+                statusText,
+            };
+    
+            if (pokemon === '1') {
+            responseData.data.pokemon = data.pokemon;
+            }
+    
+            if (damage_relations === '1') {
+            responseData.data.damage_relations = data.damage_relations;
+            }
+    
+            if (moves === '1') {
+            responseData.data.moves = data.moves;
+            }
+    
+            res.status(200).json(responseData);
+        }
+    })
+    .catch((error) => {
+        // console.log(error);
+        res.status(404).json({Error: 'Pokemon no encontrado'});
+    })
+}
+
+
 
 module.exports = {
     getPeliculas,
@@ -177,5 +249,7 @@ module.exports = {
     getActores,
     getOrigenNombre,
     getPokemon,
-    getPokemons
+    getPokemons,
+    getPokemons2,
+    getPokemonType
 };
