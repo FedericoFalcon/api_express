@@ -6,7 +6,7 @@
 1. Ver una descripción sencilla de un pokemon
 2. Chequear tipos de pokemon (fuego, agua, etc)
 3. Ver dos listados de 50 pokemons.
-
+--------------------------------
 1. 
 Dentro de la opción de ver un pokemon, se pueden añadir query params para más información.
 De igual manera sucede con los tipos.
