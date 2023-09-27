@@ -18,15 +18,15 @@ const getPokemon = (req, res) => {
                 tipo: data.types[0].type.name,
                 altura: `${data.height} pies`,
                 peso: `${data.weight} kg`
-            }
+            },
             });
         }else{
             const responseData = {
                 status,
+                statusText,
                 data: {
                   nombre: data.name,
                 },
-                statusText,
             };
             if (abilities === '1') {
             responseData.data.habilidades = data.abilities;
@@ -57,8 +57,8 @@ const getPokemons = (req, res) => {
     .then(({status, data, statusText}) => {
         res.status(200).json({
             status,
-            data,
             statusText,
+            data,
         });
     })
     .catch(() => {
@@ -72,8 +72,8 @@ const getPokemons2 = (req, res) => {
     .then(({status, data, statusText}) => {
         res.status(200).json({
             status,
-            data,
             statusText,
+            data,
         });
     })
     .catch(() => {
@@ -92,19 +92,19 @@ const getPokemonType = (req, res) => {
         if (!pokemon && !damage_relations && !moves){
             res.status(200).json({
             status,
+            statusText,
             data: {
                 tipo: data.name,
                 id: data.id,
             },
-                statusText,
             });
         }else{
             const responseData = {
                 status,
+                statusText,
                 data: {
                   nombre: data.name,
                 },
-                statusText,
             };   
             if (pokemon === '1') {
             responseData.data.pokemon = data.pokemon;
