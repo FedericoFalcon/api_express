@@ -113,7 +113,7 @@ const getPokemonType = (req, res) => {
         }
     })
     .catch(() => {
-        res.status(404).json({Error: 'Pokemon no encontrado'});
+        res.status(404).json({Error: 'Tipo de pokemon no encontrado'});
     })
 }
 
