@@ -16,7 +16,9 @@ Es decir, los query params funcionan a modo de 'true'.
 
 Ejemplos:
 https://api-render-express-ejx1.onrender.com/v1/pokemon/psyduck
+
 https://api-render-express-ejx1.onrender.com/v1/pokemon/mankey?abilities=1
+
 https://api-render-express-ejx1.onrender.com/v1/pokemon/kadabra?stats=1&abilities=1&sprites=1
 
 2. 
@@ -25,10 +27,13 @@ y hasta 3 query params (pokemon=1, damage_relations=1 ,moves=1)
 
 Ejemplos: 
 https://api-render-express-ejx1.onrender.com/v1/pokemontype/water
+
 https://api-render-express-ejx1.onrender.com/v1/pokemontype/fire?pokemon=1
+
 https://api-render-express-ejx1.onrender.com/v1/pokemontype/electric?pokemon=1&damage_relations=1&moves=1
 
 3. 
 La API permite ver dos listados de 50 pokemons:
 https://api-render-express-ejx1.onrender.com/v1/pokemons
+
 https://api-render-express-ejx1.onrender.com/v1/pokemons2
