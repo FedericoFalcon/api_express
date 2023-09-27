@@ -30,18 +30,12 @@ const getPokemon = (req, res) => {
             };
             if (abilities === '1') {
             responseData.data.habilidades = data.abilities;
-            }else{
-                responseData.data.habilidades = {queryError: 'Unico valor aceptado: 1 (true)'}
             }
             if (sprites === '1') {
             responseData.data.sprites = data.sprites;
-            }else{
-                responseData.data.sprites = {queryError: 'Unico valor aceptado: 1 (true)'}
             }
             if (stats === '1') {
             responseData.data.stats = data.stats;
-            }else{
-                responseData.data.stats = {queryError: 'Unico valor aceptado: 1 (true)'}
             }
             res.status(200).json(responseData);
         }
